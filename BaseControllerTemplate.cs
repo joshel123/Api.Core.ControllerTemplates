@@ -28,18 +28,22 @@ namespace Api.Core.ControllerTemplates
         /// <returns>Formatted text with exposed API endpoints.</returns>
         [HttpGet("Test")]
         public virtual IActionResult Test()
-        {
-            var methods = GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-
+        {            
             var sb = new StringBuilder();
-            sb.Append($"------------------------------\n");
+            var methods = GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            string partition = $"------------------------------\n";
+
+            //header 
+            sb.Append(partition);
             sb.Append($"Service Name: {GetType().Name}<{typeof(T).GetType().Name}>\n");
-            sb.Append($"------------------------------\n");
+            sb.Append(partition);
+
+            //body
             foreach(var m in methods)
-            {
                 sb.Append($"public {m.ReturnType.Name} {m.Name}\n");
-            }
-            sb.Append($"------------------------------\n");
+            
+            //footer
+            sb.Append(partition);
 
             return new OkObjectResult(sb.ToString());
         }

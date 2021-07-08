@@ -11,7 +11,7 @@ namespace Api.Core.ControllerTemplates
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReadControllerTemplate<T> : BaseControllerTemplate<T>, IReadOnlyDataController<T> where T : class
+    public class ReadControllerTemplate<T> : BaseControllerTemplate<T>, IReadOnlyAccess<T, IActionResult> where T : class
     {
         private readonly IReadDataAccessService<T> _dataService;
 

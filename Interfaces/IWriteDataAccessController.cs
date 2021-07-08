@@ -5,25 +5,25 @@ using System.Threading.Tasks;
 
 namespace Api.Core.ControllerTemplates.Interfaces
 {
-    public interface IWriteDataAccessController<in T> where T : class
+    public interface IWriteAccess<in TEntity, TReturn> where TEntity : class
     {
         [HttpPost("Insert")]
-        Task<IActionResult> Insert([FromBody] T request);
+        Task<TReturn> Insert([FromBody] TEntity request);
 
         [HttpPost("InsertMany")]
-        Task<IActionResult> InsertMany([FromBody] IEnumerable<T> request);
+        Task<TReturn> InsertMany([FromBody] IEnumerable<TEntity> request);
 
         [HttpPost("Update")]
-        Task<IActionResult> Update([FromBody] T request);
+        Task<TReturn> Update([FromBody] TEntity request);
 
         [HttpPost("UpdateMany")]
-        Task<IActionResult> UpdateMany([FromBody] IEnumerable<T> request);
+        Task<IActionResult> UpdateMany([FromBody] IEnumerable<TEntity> request);
 
         [HttpPost("Delete")]
-        Task<IActionResult> Delete([FromBody] T request);
+        Task<IActionResult> Delete([FromBody] TEntity request);
 
         [HttpPost("DeleteMany")]
-        Task<IActionResult> DeleteMany([FromBody] IEnumerable<T> request);
+        Task<IActionResult> DeleteMany([FromBody] IEnumerable<TEntity> request);
 
     }
 }

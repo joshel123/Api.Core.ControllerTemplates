@@ -5,7 +5,6 @@ namespace Api.Core.ControllerTemplates.DataAccessInterfaces
 {
     public interface IReadDataAccessService<T>
     {
-
         Task<T> Get(long key);
 
         Task<T> Get(int key);

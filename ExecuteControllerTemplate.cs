@@ -12,7 +12,7 @@ namespace Api.Core.ControllerTemplates
 
     [Route("api/[controller]")]
     [ApiController]
-    public class ExecuteControllerTemplate<T> : BaseControllerTemplate<T>, IExecuteDataAccessController<T> where T : class
+    public class ExecuteControllerTemplate<T> : BaseControllerTemplate<T>, IExecuteAccess<T, IActionResult> where T : class
     {
         private readonly IExecuteDataAccessService<T> _dataService;
 

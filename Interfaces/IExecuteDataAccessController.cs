@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Api.Core.ControllerTemplates.Interfaces
 {
-    public interface IExecuteDataAccessController<in T> where T : class
+    public interface IExecuteAccess<in TEntity, TReturn> where TEntity : class
     {
         [HttpPost("GetWithProcedure/{storedProcedure}")]
-        Task<IActionResult> GetWithProcedure(string storedProcedure, [FromBody] params KeyValuePair<string, object>[] parameters);
+        Task<TReturn> GetWithProcedure(string storedProcedure, [FromBody] params KeyValuePair<string, object>[] parameters);
     }
 }

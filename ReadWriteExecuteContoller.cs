@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Api.Core.ControllerTemplates
 {
     [Route("api/[controller]")]
-    public class ReadWriteExecuteContoller<T> : BaseControllerTemplate<T>, IReadOnlyDataController<T>, IWriteDataAccessController<T>, IExecuteDataAccessController<T> where T : class
+    public class ReadWriteExecuteContoller<T> : BaseControllerTemplate<T>, IReadOnlyAccess<T, IActionResult>, IWriteAccess<T, IActionResult>, IExecuteAccess<T, IActionResult> where T : class
     {
         private readonly IReadWriteExecuteDataAccessService<T> _dataService;
         private readonly ReadControllerTemplate<T> _readCtrl;

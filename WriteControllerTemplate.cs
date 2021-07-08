@@ -11,7 +11,7 @@ namespace Api.Core.ControllerTemplates
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WriteControllerTemplate<T> : BaseControllerTemplate<T>, IWriteDataAccessController<T> where T : class
+    public class WriteControllerTemplate<T> : BaseControllerTemplate<T>, IWriteAccess<T, IActionResult> where T : class
     {
          private readonly IWriteDataAccessService<T> _dataService;
 
